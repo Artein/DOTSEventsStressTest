@@ -17,7 +17,7 @@ public static class JobNativeMultiHashMapVisitKeyValue
 {
     public static unsafe JobHandle ScheduleParallel<TJob, TKey, TValue>(
         this TJob jobData,
-        NativeMultiHashMap<TKey, TValue> hashMap,
+        NativeParallelMultiHashMap<TKey, TValue> hashMap,
         int minIndicesPerJobCount,
         JobHandle dependsOn = default)
         where TJob : struct, IJobNativeMultiHashMapVisitKeyValue<TKey, TValue>
@@ -45,7 +45,7 @@ public static class JobNativeMultiHashMapVisitKeyValue
         where TValue : struct
     {
         [ReadOnly]
-        public NativeMultiHashMap<TKey, TValue> HashMap;
+        public NativeParallelMultiHashMap<TKey, TValue> HashMap;
 
         internal TJob JobData;
 

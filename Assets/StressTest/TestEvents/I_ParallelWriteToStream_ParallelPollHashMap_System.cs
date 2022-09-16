@@ -8,12 +8,12 @@ using Unity.Transforms;
 public partial class I_ParallelWriteToStream_ParallelPollHashMap_System : SystemBase
 {
     public NativeStream PendingStream;
-    public NativeMultiHashMap<Entity, DamageEvent> DamageEventsMap;
+    public NativeParallelMultiHashMap<Entity, DamageEvent> DamageEventsMap;
 
     protected override void OnCreate()
     {
         base.OnCreate();
-        DamageEventsMap = new NativeMultiHashMap<Entity, DamageEvent>(500000, Allocator.Persistent);
+        DamageEventsMap = new NativeParallelMultiHashMap<Entity, DamageEvent>(500000, Allocator.Persistent);
     }
 
     protected override void OnDestroy()

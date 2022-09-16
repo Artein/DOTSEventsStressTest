@@ -13,7 +13,7 @@ public struct SinglePollDamageEventHashMapJob : IJob
     [ReadOnly]
     public EntityTypeHandle EntityType;
     [ReadOnly]
-    public NativeMultiHashMap<Entity, DamageEvent> DamageEventsMap;
+    public NativeParallelMultiHashMap<Entity, DamageEvent> DamageEventsMap;
     [NativeDisableParallelForRestriction]
     public ComponentDataFromEntity<Health> HealthFromEntity;
 
@@ -58,7 +58,7 @@ public struct ParallelPollDamageEventHashMapJob : IJobNativeMultiHashMapVisitKey
 [BurstCompile(OptimizeFor = OptimizeFor.Performance)]
 public struct ClearDamageEventHashMapJob : IJob
 {
-    public NativeMultiHashMap<Entity, DamageEvent> DamageEventsMap;
+    public NativeParallelMultiHashMap<Entity, DamageEvent> DamageEventsMap;
 
     public void Execute()
     {
